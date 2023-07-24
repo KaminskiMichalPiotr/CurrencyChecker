@@ -64,14 +64,6 @@ public class CurrencyValueService {
         return rate;
     }
 
-    public List<String> getCurrencyCodes(){
-        List<CurrencyRate> currencyRates = getCurrencyRates();
-        return currencyRates
-                .stream()
-                .map(CurrencyRate::getCode)
-                .collect(Collectors.toList());
-    }
-
     private List<CurrencyRate> getCurrencyRates() {
         try {
             // Make an HTTP request to the NBP API and fetch data in JSON format.
@@ -97,6 +89,14 @@ public class CurrencyValueService {
         } catch (JsonProcessingException e) {
             throw new CurrencyRatesProcessingException("ERROR: couldn't process NBP rates response");
         }
+    }
+
+    public List<String> getCurrencyCodes(){
+        List<CurrencyRate> currencyRates = getCurrencyRates();
+        return currencyRates
+                .stream()
+                .map(CurrencyRate::getCode)
+                .collect(Collectors.toList());
     }
 
     public List<CurrencyRequest> getCurrencyRequests() {

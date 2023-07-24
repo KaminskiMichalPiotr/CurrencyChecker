@@ -22,8 +22,8 @@ public class CurrencyValueController {
 
     @PostMapping("/get-current-currency-value-command")
     public ResponseEntity<BigDecimal> getCurrencyRate(@Valid @RequestBody CurrencyClientRequest currencyClientRequest){
-        BigDecimal currencyRate = currencyValueService.getCurrencyRate(currencyClientRequest);
-        return new ResponseEntity<>(currencyRate, HttpStatus.OK);
+        BigDecimal value = currencyValueService.getCurrencyRate(currencyClientRequest);
+        return new ResponseEntity<>(value, HttpStatus.OK);
     }
 
     @GetMapping("/requests")
