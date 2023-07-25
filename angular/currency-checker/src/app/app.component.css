@@ -1,0 +1,18 @@
+router-outlet{
+  height: 85%;
+}
+
+.header{
+  display: flex;
+  gap: 2rem
+}
+.header > span{
+  padding: 10px;
+  cursor: pointer;
+}
+
+
+.header > span:hover{
+  background: darkblue;
+  border-radius: 5px;
+}
