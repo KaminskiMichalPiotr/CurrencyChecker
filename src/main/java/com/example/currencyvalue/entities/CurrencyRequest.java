@@ -1,10 +1,7 @@
 package com.example.currencyvalue.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -35,6 +32,7 @@ public class CurrencyRequest {
     @NotNull(message = "Date cannot be null")
     private LocalDateTime date;
     @DecimalMin(value = "0.0", message = "Value cannot be less than 0.0")
+    @Column(name = "currency_value", precision = 10, scale = 4)
     private BigDecimal value;
 
 

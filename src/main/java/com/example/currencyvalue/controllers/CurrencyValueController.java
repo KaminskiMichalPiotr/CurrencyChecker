@@ -2,6 +2,7 @@ package com.example.currencyvalue.controllers;
 
 
 import com.example.currencyvalue.dtos.CurrencyClientRequest;
+import com.example.currencyvalue.dtos.CurrencyRateResponse;
 import com.example.currencyvalue.entities.CurrencyRequest;
 import com.example.currencyvalue.services.CurrencyValueService;
 import jakarta.validation.Valid;
@@ -21,9 +22,9 @@ public class CurrencyValueController {
     private CurrencyValueService currencyValueService;
 
     @PostMapping("/get-current-currency-value-command")
-    public ResponseEntity<BigDecimal> getCurrencyRate(@Valid @RequestBody CurrencyClientRequest currencyClientRequest){
-        BigDecimal value = currencyValueService.getCurrencyRate(currencyClientRequest);
-        return new ResponseEntity<>(value, HttpStatus.OK);
+    public ResponseEntity<CurrencyRateResponse> getCurrencyRate(@Valid @RequestBody CurrencyClientRequest currencyClientRequest){
+        BigDecimal rate = currencyValueService.getCurrencyRate(currencyClientRequest);
+        return new ResponseEntity<>(new CurrencyRateResponse(rate), HttpStatus.OK);
     }
 
     @GetMapping("/requests")

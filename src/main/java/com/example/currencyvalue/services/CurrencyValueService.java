@@ -102,4 +102,6 @@ public class CurrencyValueService {
     public List<CurrencyRequest> getCurrencyRequests() {
         return currencyRequestRepository.findAll();
     }
+
+
 }
