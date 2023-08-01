@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CurrencyRequestRepository extends JpaRepository<CurrencyRequest, Long> {
 
+
 }

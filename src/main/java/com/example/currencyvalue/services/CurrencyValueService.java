@@ -11,6 +11,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
@@ -101,6 +104,15 @@ public class CurrencyValueService {
 
     public List<CurrencyRequest> getCurrencyRequests() {
         return currencyRequestRepository.findAll();
+    }
+
+    public Page<CurrencyRequest> getCurrencyRequestsPageable(Pageable pageable){
+
+        Page<CurrencyRequest> currencyRequestsPage = currencyRequestRepository.findAll(pageable);
+        int count = (int) currencyRequestRepository.count();
+
+        return new PageImpl<>(currencyRequestsPage.getContent(), pageable, count);
+
     }
 
 
