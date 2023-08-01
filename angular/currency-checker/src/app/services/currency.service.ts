@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CurrencyRequest} from "../models/currency-request.model";
 import {CurrencyClientRequest} from "../models/currency-client-request.model";
 import {CurrencyRate} from "../models/currency-rate.model";
+import {CurrencyRequestResponse} from "../models/currency-request-pageable-response.model";
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,13 @@ export class CurrencyService {
 
   getCurrencyRequests(): Observable<CurrencyRequest[]>{
     return this.http.get<CurrencyRequest[]>(this.apiURL + "/requests")
+  }
+
+  getCurrencyRequestsByPage(page: number, size: number): Observable<CurrencyRequestResponse>{
+    let params = new HttpParams();
+    params = params.set('page', page.toString());
+    params = params.set('size', size.toString());
+    return this.http.get<CurrencyRequestResponse>(this.apiURL + "/requests/pageable", { params })
   }
 
   getCurrencyRate(body: CurrencyClientRequest): Observable<CurrencyRate>{

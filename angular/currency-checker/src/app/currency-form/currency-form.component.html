@@ -1,27 +1,27 @@
 <div class="form-container">
-<form class="currency-form" [formGroup]="form" (ngSubmit)="onSubmit()">
-  <mat-form-field class="name-input">
-    <mat-label>Name</mat-label>
-    <input matInput type="text" formControlName="name" required>
-    <mat-error *ngIf="form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)">
-      Name is required.
-    </mat-error>
-  </mat-form-field>
+  <form class="currency-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="name-input">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" formControlName="name" required>
+      <mat-error *ngIf="form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)">
+        Name is required.
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Currency</mat-label>
-    <mat-select formControlName="currency" required>
-      <mat-option *ngFor="let code of options" [value]="code">
-        {{code}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Currency</mat-label>
+      <mat-select formControlName="currency" required>
+        <mat-option *ngFor="let code of options" [value]="code">
+          {{code}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Submit</button>
-</form>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Submit</button>
+  </form>
 
 
-<div *ngIf="showResult" class="currency-result">
-  <p>{{rate}}</p>
-</div>
+  <div *ngIf="showResult" class="currency-result">
+    <p>{{rate}}</p>
+  </div>
 </div>

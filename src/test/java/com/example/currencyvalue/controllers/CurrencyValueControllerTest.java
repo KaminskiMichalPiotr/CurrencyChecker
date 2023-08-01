@@ -135,6 +135,6 @@ class CurrencyValueControllerTest {
                 result.getResponse().getContentAsString(),
                 new TypeReference<>() {
                 });
-        assertTrue(parsedResponse.containsAll(currencyCodes), "Response doesn't contain expected currecy codes");
+        assertTrue(parsedResponse.containsAll(currencyCodes), "Response doesn't contain expected currencies codes");
     }
 }
